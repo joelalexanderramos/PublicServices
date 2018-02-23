@@ -1,6 +1,6 @@
 ﻿namespace PublicServices.Infraestructure
 {
-    using PublicServices.ViewModels;
+    using ViewModels;
 
     public class InstanceLocator
     {

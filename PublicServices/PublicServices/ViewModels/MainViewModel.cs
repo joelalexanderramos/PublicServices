@@ -6,7 +6,7 @@
     public class MainViewModel
     {
         #region Properties
-        public List<PublicService> PublicServiceList
+        public List<GovService> GovServiceList
         {
             get;
             set;
@@ -14,14 +14,16 @@
         #endregion
 
         #region ViewModels
-        //public LoginViewModel Login { get; set; }
+        public GovServicesViewModel GovServices { get; set; }
+
+        public GovServiceViewModel GovService { get; set; }
         #endregion
 
         #region Constructor
         public MainViewModel()
         {
             instance = this;
-            //this.Login = new LoginViewModel();
+            this.GovServices = new GovServicesViewModel();
         }
         #endregion
 

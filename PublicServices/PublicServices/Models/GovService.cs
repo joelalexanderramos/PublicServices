@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class PublicService
+    public class GovService
     {
         [JsonProperty(PropertyName = "codigo")]
         public int Codigo { get; set; }

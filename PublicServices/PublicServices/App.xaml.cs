@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
-
-namespace PublicServices
+﻿namespace PublicServices
 {
-	public partial class App : Application
+    using Xamarin.Forms;
+    using Views;
+
+    public partial class App : Application
 	{
 		public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new PublicServices.MainPage();
-		}
+            //MainPage = new PublicServices.MainPage();
+            this.MainPage = new NavigationPage(new GovServicesPage());
+        }
 
 		protected override void OnStart ()
 		{
