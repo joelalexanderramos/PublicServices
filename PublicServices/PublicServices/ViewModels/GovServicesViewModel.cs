@@ -50,12 +50,12 @@
         public GovServicesViewModel()
         {
             this.apiService = new APIService();
-            this.LoadGovermentServices();
+            this.LoadGovServices();
         }
         #endregion
 
         #region Methods
-        private async void LoadGovermentServices()
+        private async void LoadGovServices()
         {
             this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
@@ -88,12 +88,14 @@
             }
 
             MainViewModel.GetInstance().GovServiceList = (List<GovService>)response.Result;
+
             this.GovServices = new ObservableCollection<GovServiceItemViewModel>(
-                this.ToLandItemViewModel());
+                this.ToGovServiceItemViewModel());
+
             this.IsRefreshing = false;
         }
 
-        private IEnumerable<GovServiceItemViewModel> ToLandItemViewModel()
+        private IEnumerable<GovServiceItemViewModel> ToGovServiceItemViewModel()
         {
             return MainViewModel.GetInstance().GovServiceList.Select(l => new GovServiceItemViewModel
             {
@@ -104,7 +106,7 @@
                 Institucion = l.Institucion,
                 Nombre = l.Nombre,
                 Tiempo = l.Tiempo,
-                UnidadResponsable = l.UnidadResponsable
+                UnidadResponsable = l.UnidadResponsable,
             });
         }
 
@@ -115,7 +117,7 @@
         {
             get
             {
-                return new RelayCommand(LoadGovermentServices);
+                return new RelayCommand(LoadGovServices);
             }
         }
 
@@ -132,14 +134,13 @@
             if (string.IsNullOrEmpty(this.Filter))
             {
                 this.GovServices = new ObservableCollection<GovServiceItemViewModel>(
-                    this.ToLandItemViewModel());
+                    this.ToGovServiceItemViewModel());
             }
             else
             {
-                this.govServices = new ObservableCollection<GovServiceItemViewModel>(
-                    this.ToLandItemViewModel().Where(
-                        l => l.Nombre.ToLower().Contains(this.Filter.ToLower()) ||
-                             l.Institucion.ToLower().Contains(this.Filter.ToLower())));
+                this.GovServices = new ObservableCollection<GovServiceItemViewModel>(
+                    this.ToGovServiceItemViewModel().Where(
+                        l => l.Nombre.ToLower().Contains(this.Filter.ToLower())));
             }
         }
         #endregion

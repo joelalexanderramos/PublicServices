@@ -20,7 +20,7 @@
         private async void SelectGovService()
         {
             MainViewModel.GetInstance().GovService = new GovServiceViewModel(this);
-            await Application.Current.MainPage.Navigation.PushAsync(new GovServicesPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new GovServicePage());
         }
         #endregion
     }
