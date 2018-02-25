@@ -100,7 +100,7 @@
                         Text="{Binding GovService.FormaAcceso}"
                         TextColor="Black">
                     </Label>
-                    <Label
+                    <!--<Label
                         Grid.Column="0"
                         Grid.Row="6"
                         Text="Detalle:"
@@ -112,7 +112,7 @@
                         FontAttributes="Bold"
                         Text="{Binding GovService.Detalle}"
                         TextColor="Black">
-                    </Label>
+                    </Label>-->
                 </Grid>
             </StackLayout>
         </ScrollView>
